@@ -1,0 +1,5 @@
+GET https://api.thevirustracker.com/free-api?countryTotal=US HTTP/1.1
+###
+GET https://disease.sh/v3/covid-19/all HTTP/1.1
+###
+GET https://disease.sh/v3/covid-19/countries/BE HTTP/1.1
