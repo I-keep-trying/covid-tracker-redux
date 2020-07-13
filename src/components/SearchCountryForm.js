@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { loadCountry } from '../countries/thunks'
 //import countryCodes from '../countriesWithCodes.json'
@@ -44,6 +44,17 @@ const SearchCountryForm = () => {
   const countries = useSelector(state => state.countries)
   const onSubmitPressed = countryCode => dispatch(loadCountry(countryCode))
 
+  const options = Object.keys(codes.object).map((key, i) => (
+    <option key={i} value={key}>
+      {codes.object[key]}
+    </option>
+  ))
+  options.splice(0, 0,
+    <option key='INITIAL' value=''>
+      Please, select a country
+    </option>
+  )
+
   return (
     <div>
       {/*       <SearchCountryInput
@@ -64,12 +75,8 @@ const SearchCountryForm = () => {
         ))}
 
       <br />
-      <select onChange={e => setInputCountryCode(e.currentTarget.value)}>
-        {Object.keys(codes.object).map((key, i) => (
-          <option key={i} value={key}>
-            {codes.object[key]}
-          </option>
-        ))}
+      <select value={inputCountryCode} onChange={e => setInputCountryCode(e.currentTarget.value)}>
+        {options}
       </select>
       <SearchCountryButton
         onClick={() => {

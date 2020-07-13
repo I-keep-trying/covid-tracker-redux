@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-
-import SearchCountryForm from './components/SearchCountryForm'
 import CountriesList from './components/CountriesList'
+import SearchCountryForm from './components/SearchCountryForm'
+
 
 const AppWrapper = styled.div`
   padding: 2rem;
